@@ -133,8 +133,6 @@ vel_estimate = []; %velocity estimation
 
 P_estimate = P;
 
-% Flags for displaying depth image or color image
-
 %% Start mapping skeleton   
 
 while ishandle(himg) %loop for every frame
@@ -150,11 +148,11 @@ while ishandle(himg) %loop for every frame
     depthHeight = size(depthMap, 1); % find depth Height
     depthWidth = size(depthMap ,2); % find depth Width
     colors = ['r';'g';'b';'c';'y';'m']; % colors for different bodies
-    imshow(colorMap); %display color frame
-%     imshow(depthMap, [0 4096]); % display depth frame
+%    imshow(colorMap); %display color frame
+    imshow(depthMap, [0 4096]); % display depth frame
        if (sum(bodies)) > 0 % if body is tracked
-            imshow(colorMap); %display color frame
-%             imshow(depthMap, [0 4096]); % display depth frame
+%            imshow(colorMap); %display color frame
+            imshow(depthMap, [0 4096]); % display depth frame
             skeletonJoints = depthMetaData.DepthJointIndices(:,:,depthMetaData.IsBodyTracked); % get the skeleton joints
             posJoints = depthMetaData.JointPositions(:,:,depthMetaData.IsBodyTracked); % get the real positions of tracked joints in meters
             hand_state = depthMetaData.HandRightState(trackedBodies); % 0 unknown | 1 not tracked | 2 open | 3 closed | 4 lasso
@@ -224,11 +222,11 @@ while ishandle(himg) %loop for every frame
                     if (flagStart == 1)
                         th = 0:pi/50:2*pi;
                         rd = round(90 - 1e3*min(hand_pos_z)/30);
-                        coords = depthMetaData.ColorJointIndices(12,:,trackedBodies); %coordinates for color Map
-                        plot(rd*sin(th) + coords(1,1) , rd*cos(th) + coords(1,2),'g'); %plot for color map
-    %                         coords = depthMetaData.DepthJointIndices(25,:,trackedBodies); % coordinates for depth Map
-    %                         plot(rd*sin(th) + coords(1,1),rd*cos(th) + coords(1,2),'g'); %plot for depth Map
-    %                         plot(skeletonJoints(12,1,body), skeletonJoints(12,2,body), 'r*');
+%                        coords = depthMetaData.ColorJointIndices(12,:,trackedBodies); %coordinates for color Map
+%                        plot(rd*sin(th) + coords(1,1) , rd*cos(th) + coords(1,2),'g'); %plot for color map
+                        coords = depthMetaData.DepthJointIndices(25,:,trackedBodies); % coordinates for depth Map
+                        plot(rd*sin(th) + coords(1,1),rd*cos(th) + coords(1,2),'g'); %plot for depth Map                         
+%						plot(skeletonJoints(12,1,body), skeletonJoints(12,2,body), 'r*');
                     end
                 end
             end
@@ -305,8 +303,8 @@ while ishandle(himg) %loop for every frame
             color_v = -((color_focal_length_y * Q_estimate(2) / Q_estimate(3)) - 1080/2);
             
             if (flagStart == 1)
-%                 plot(rd*sin(th)+depth_u,rd*cos(th)+depth_v,'r'); % the kalman filter tracking in depth map
-                plot(rd*sin(th)+color_u,rd*cos(th)+color_v,'r'); % the kalman filter tracking in color map
+                plot(rd*sin(th)+depth_u,rd*cos(th)+depth_v,'r'); % the kalman filter tracking in depth map
+%                plot(rd*sin(th)+color_u,rd*cos(th)+color_v,'r'); % the kalman filter tracking in color map
             end
 
             hold off; % release frame
@@ -346,6 +344,7 @@ subplot(2,2,1);
 plot(time(2:counter),Q_loc_meas(1,:)*1e3,'r');
 hold on
 plot(time(2:counter),F_Q_estimate(1,:)*1e3,'b');
+% Compare to the smooth function
 % hold on
 % plot(time(2:counter),smooth(Q_loc_meas(1,:)*1e3),'m');
 title('X AXIS');
@@ -360,6 +359,7 @@ subplot(2,2,2)
 plot(time(2:counter),Q_loc_meas(2,:)*1e3,'r');
 hold on
 plot(time(2:counter),F_Q_estimate(2,:)*1e3,'b');
+% Compare to the smooth function
 % hold on
 % plot(time(2:counter),smooth(Q_loc_meas(1,:)*1e3),'m');
 title('Y AXIS');
@@ -372,6 +372,7 @@ subplot(2,2,3)
 plot(time(2:counter),Q_loc_meas(3,:)*1e3,'r');
 hold on
 plot(time(2:counter),F_Q_estimate(3,:)*1e3,'b');
+% Compare to the smooth function
 % hold on
 % plot(time(2:counter),smooth(Q_loc_meas(1,:)*1e3),'m');
 title('Z AXIS');
