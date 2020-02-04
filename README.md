@@ -3,7 +3,7 @@ Implementation of Linear Kalman Filter on Kinect V2 skeleton tracking data using
 
 ## Description
 Smooth out the noise in kinectv2 skeleton tracking algorithm using simple linear Kalman Filtering.
-Tested on MATLAB R2018a.
+Tested on MATLAB R2018a and Microsoft Kinect V2 for windows.
 
 ## Instructions
 
