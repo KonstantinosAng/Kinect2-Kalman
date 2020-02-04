@@ -1,5 +1,5 @@
 # KinectV2-Kalman
-Implementation of Linear Kalman Filter on KinectV2 skeleton tracking data using MATLAB.
+Implementation of Linear Kalman Filter on Kinect V2 skeleton tracking data using MATLAB.
 
 ## Description
 Smooth out the noise in kinectv2 skeleton tracking algorithm using simple linear Kalman Filtering.
@@ -7,7 +7,8 @@ Tested on MATLAB R2018a.
 
 ## Instructions
 
-Simply run the kalman_kinectv2.m file.
+Simply run the kalman_kinectv2.m file to for the kalman filtering of Kinect V2.
+The pointcloud.m is simply a way to compute a pointcloud in matlab using the Kinect V2 Sensor.
 
 ## Requirements
 Full list of **all** requirements
