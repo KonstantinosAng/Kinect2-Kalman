@@ -70,41 +70,6 @@ SkeletonConnectionMap = [ [4 3];        %Head - Neck
                           [14 15];      %KneeLeft - AnkleLeft
                           [15 16]; ];   %AnkleLeft - FootLeft
 
-%% Find the Dimensions of Fabric
-% 
-% %Get snapshot
-% rgbImage = getsnapshot(colorVid);
-% 
-% %Transform to GrayImage
-% grayImage = rgbImage(:, :, 1);
-% 
-% %Transform to Binary Image
-% binaryImage = grayImage > 200;
-% 
-% % Keep only the largest blob.
-% binaryImage = bwareafilt(binaryImage, 1);
-% 
-% % Get the bounding box of the blob.
-% props = regionprops(binaryImage, 'BoundingBox');
-% boundingBox = [props.BoundingBox];
-% width = props.BoundingBox(3); % in pixels
-% height = props.BoundingBox(4); % in pixels
-% xMin = ceil(boundingBox(1)); % in pixels
-% xMax = xMin + boundingBox(3) - 1; % in pixels
-% yMin = ceil(boundingBox(2)); % in pixels
-% yMax = yMin + boundingBox(4) - 1; % in pixels
-% 
-% % Transform to real world coordinates
-% fabric_xmin = ( xMin - ( 1920 / 2 ) ) * kinect_distance / color_focal_length_x;
-% fabric_xmax = ( xMax - ( 1920 / 2 ) ) * kinect_distance / color_focal_length_x;
-% fabric_ymin = ( yMin - ( 1080 / 2 ) ) * kinect_distance / color_focal_length_y;
-% fabric_ymax = ( yMax - ( 1080 / 2 ) ) * kinect_distance / color_focal_length_y;
-% 
-% % X Y of world coordinates
-% topLeft = [fabric_xmin,fabric_ymax]; % in meters
-% topRight = [fabric_xmax, fabric_ymax]; % in meters
-% bottomRight = [fabric_xmax, fabric_ymin]; % in meters
-% bottomLeft = [fabric_xmin, fabric_ymin]; % in meters
 
 %% Initialize parameters for kalmam filter
 flagStart = 0;
@@ -420,40 +385,3 @@ set(findobj(gcf,'type','axes'),'FontName','Arial','FontSize',12,'FontWeight','Bo
 %% Release the kinect
 stop(depthVid)
 stop(colorVid)
-
-%% Point Cloud
-% clear
-%Create devices
-% colorDevice = imaq.VideoDevice('kinect',1);
-% depthDevice = imaq.VideoDevice('kinect',2);
-% %Initialize devices
-% colorDevice();
-% depthDevice();
-%Get one frame from each
-% colorImage = colorDevice();
-% depthImage = depthDevice();
-% %point cloud
-% ptCloud = pcfromkinect(depthDevice, depthImage, colorImage);
-% 
-% % Initialize a player to visualize 3-D point cloud data. The axis is
-% % set appropriately to visualize the point cloud from Kinect.
-%   player = pcplayer(ptCloud.XLimits, ptCloud.YLimits, ptCloud.ZLimits,...
-%               'VerticalAxis', 'y', 'VerticalAxisDir', 'down');
-% 
-%   xlabel(player.Axes, 'X (m)');
-%   ylabel(player.Axes, 'Y (m)');
-%   zlabel(player.Axes, 'Z (m)');
-% 
-%   % Acquire and view Kinect point cloud data.
-%   while isOpen(player)
-%      colorImage = colorDevice();
-%      depthImage = depthDevice();
-% 
-%      ptCloud = pcfromkinect(depthDevice, depthImage, colorImage);
-% 
-%      view(player, ptCloud);
-%   end
-  
-%% Release video
-% release(colorDevice);
-% release(depthDevice);
