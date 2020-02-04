@@ -8,7 +8,8 @@ Tested on MATLAB R2018a and Microsoft Kinect V2 for windows.
 ## Instructions
 
 Simply run the color_kalman_kinectv2.m or the depth_kalman_kinectv2.m file to for the kalman filtering of Kinect V2.
-The pointcloud.m is simply a way to compute a pointcloud in matlab using the Kinect V2 Sensor.
+The pointcloud.m is simply a way to compute a pointcloud in matlab using the Kinect V2 Sensor. Keep in mind
+that the Kinect V2 is pretty slow in MATLAB when the skeleton tracking is enabled.
 
 ## Requirements
 Full list of **all** requirements
