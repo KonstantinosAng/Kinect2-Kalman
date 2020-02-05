@@ -17,3 +17,25 @@ Full list of **all** requirements
 
 * [MATLAB R2018a](https://www.mathworks.com/products/matlab.html)
 * [Image Acquisition Toolbox Support Package for Kinect For Windows Sensor](https://www.mathworks.com/help/supportpkg/kinectforwindowsruntime/index.html?s_tid=CRUX_lftnav)
+
+## Examples of Code
+***
+
+# Color
+
+Example of Kalman and Kinect Joint Tracking, where the red circle represents 
+the kalman Joint Tracking and the green circle the kinect's joint value:
+
+!(Color Tracking)[img/color.png] 
+
+# Depth
+
+Same as the Color Example
+
+!(Depth Tracking)[img/depth.png]
+
+# Plots
+
+Plots comparing the kinect's values to the kalman estimation.
+
+!(Kalman-Kinect Comparison)[img/plot.png]
