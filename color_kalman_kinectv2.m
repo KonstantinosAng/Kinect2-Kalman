@@ -194,7 +194,7 @@ while ishandle(himg) %loop for every frame
                         rd = round(90 - 1e3*min(hand_pos_z)/30);
                         coords = depthMetaData.ColorJointIndices(12,:,trackedBodies); %coordinates for color Map
                         plot(rd*sin(th) + coords(1,1) , rd*cos(th) + coords(1,2),'g'); %plot for color map
-    %                         plot(skeletonJoints(12,1,body), skeletonJoints(12,2,body), 'r*');
+						plot(skeletonJoints(12,1,body), skeletonJoints(12,2,body), 'r*');
                     end
                 end
             end
