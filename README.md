@@ -32,10 +32,10 @@ the kalman Joint Tracking and the green circle the kinect's joint value:
 
 Same as the Color Example
 
-![Depth Tracking](https://github.com/KonstantinosAng/Kinect2-Kalman/tree/master/img/depth.png)
+![Depth Tracking](img/depth.png)
 
 # Plots
 
 Plots comparing the kinect's values to the kalman estimation.
 
-![Kalman-Kinect Comparison](https://github.com/KonstantinosAng/Kinect2-Kalman/tree/master/img/plot.png)
+![Kalman-Kinect Comparison](img/plot.png)
