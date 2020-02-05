@@ -60,6 +60,7 @@ SkeletonConnectionMap = [ [4 3];        %Head - Neck
 flagStart = 0;
 time(counter) = 0; 
 dt = 30; %Initialize refresh rate
+frame_dt = 1/30;
 Q_loc = []; %real path
 vel = []; %real velocity
 Q_loc_meas = []; %real path
